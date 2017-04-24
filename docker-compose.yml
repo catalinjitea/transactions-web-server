@@ -1,0 +1,14 @@
+web_server:
+    build: .
+    command: python web-server.py
+    ports:
+        - 5000:5000
+    links:
+        - mongo
+
+mongo:
+    image: mongo:3.0
+    container_name: mongo
+    command: mongod --smallfiles
+    expose:
+        - 27017
